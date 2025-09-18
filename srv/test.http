@@ -1,0 +1,87 @@
+### Read all entity sets which are developed
+http://localhost:4004/odata/v4/CatalogService
+
+### Read the service metadata
+http://localhost:4004/odata/v4/CatalogService/$metadata
+
+### Read the service metadata for Employee
+POST http://localhost:4004/odata/v4/CatalogService/EmployeeDetails
+Content-Type: application/json
+
+{
+      "Currency_code": "USD",
+      "ID": "02BD2137-0890-1EEA-A6C2-BB55C1978THY",
+      "accountNumber": "111222333",
+      "bankId": "510000655",
+      "bankName": "State bank of India",
+      "email": "anamikasharma164@gmail.com",
+      "gender": "F",
+      "language": "E",
+      "loginName": "Anamika",
+      "nameFirst": "Annie",
+      "nameInitials": null,
+      "nameLast": "Sharma",
+      "nameMiddle": null,
+      "phone": "+91 99199 25520",
+      "salaryAmount": "55549.00"
+    }
+
+
+### Update salary
+
+PATCH http://localhost:4004/odata/v4/CatalogService/EmployeeDetails/02BD2137-0890-1EEA-A6C2-BB55C1978THY
+Content-Type: application/json
+
+{
+    "salaryAmount": "888888.00",
+    "Currency_code": "INR"
+}
+
+### Delete Details
+
+DELETE  http://localhost:4004/odata/v4/CatalogService/EmployeeDetails/02BD2137-0890-1EEA-A6C2-BB55C1978THY
+
+### read first 5 employee details
+
+GET http://localhost:4004/odata/v4/CatalogService/EmployeeDetails?$top=5
+
+### Get PO Details
+GET  http://localhost:4004/odata/v4/CatalogService/PODetails/74867AD200E41EDBA5D8B0C98DC32052?$expand=Items
+
+###
+
+POST http://localhost:4004/odata/v4/CatalogService/PODetails('74867AD200E41EDBA5D8B0C98DC32052')/CatalogService.increasedPrice
+Content-Type: application/json
+
+{}
+
+###
+
+GET http://localhost:4004/odata/v4/CatalogService/PODetails('')/CatalogService.largestOrder()
+
+
+### Create Employee
+POST http://localhost:4004/odata/v4/CatalogService/createEmployee
+Content-Type: application/json
+
+{
+      "accountNumber": "281222356",
+      "bankId": "910000699",
+      "bankName": "State bank of Gurgaon",
+      "email": "anamikasharma164@gmail.com",
+      "gender": "F",
+      "language": "E",
+      "loginName": "Anamika",
+      "nameFirst": "Annie",
+      "nameInitials": null,
+      "nameLast": "Sharma",
+      "nameMiddle": null,
+      "phone": "+91 99199 25545",
+      "salaryAmount": "83549.00"
+    }
+
+### get Product information
+
+GET http://localhost:4004/odata/v4/CatalogService/getProducts('USD')
+
+
