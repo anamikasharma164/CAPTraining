@@ -11,8 +11,22 @@ service CatalogService @(path: 'CatalogService') {
 
   entity businesspartner   as projection on master.businesspartner;
   entity ProductInformation as projection on master.product;
-  entity EmployeeDetails    as projection on master.employees;
-  entity AddressInfo        as projection on master.address;
+  entity EmployeeDetails @(restrict:[
+    {
+      grant : ['READ'], to : 'Viewer', where : 'bankName = $user.bankName'
+    },
+    {
+      grant : ['WRITE'], to : 'Admin'
+    }
+  ])   as projection on master.employees;
+  entity AddressInfo  @(restrict : [
+    {
+      grant : ['READ'], to : 'Viewer', where : 'COUNTRY = #user.myCountry'
+    },
+    {
+      grant : ['WRITE'], to : 'Admin'
+    }
+  ])      as projection on master.address;
 
   entity PODetails @(
     odata.draft.enabled : true
