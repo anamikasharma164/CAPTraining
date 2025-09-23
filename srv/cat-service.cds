@@ -1,6 +1,6 @@
 using { pocap.db.master as master, pocap.db.transaction as transaction } from '../db/datamodel';
 using { pocap.common as common  } from '../db/common';
-using { cuid, Currency } from '@sap/cds/common';
+
 service CatalogService @(path: 'CatalogService' , requires: 'authenticated-user') {
 
   @Capabilities: {
