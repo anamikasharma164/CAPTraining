@@ -16,6 +16,8 @@ modules:
     path: app
     parameters:
       buildpack: nodejs_buildpack
+      memory: 96M
+      disk-quota: 256M
     build-parameters:
       builder: npm-ci
     requires:
@@ -28,13 +30,14 @@ modules:
           forwardAuthToken: true
           url: '~{srv-url}'
 
-
   - name: capTraining-srv
     type: nodejs
     path: gen/srv
     parameters:
       instances: 1
       buildpack: nodejs_buildpack
+      memory: 96M
+      disk-quota: 256M
     build-parameters:
       builder: npm-ci
     provides:
@@ -50,6 +53,8 @@ modules:
     path: gen/db
     parameters:
       buildpack: nodejs_buildpack
+      memory: 96M
+      disk-quota: 256M
     requires:
       - name: capTraining-db
 
